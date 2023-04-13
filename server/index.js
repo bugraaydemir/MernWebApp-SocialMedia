@@ -51,7 +51,7 @@ app.use(bodyParser.urlencoded({limit: 1000000,extended:true}));
 
 // Set up CORS for specific origins
 app.use(function(req, res, next) {
-  const allowedOrigins = ["https://sociallobbystack.herokuapp.com"];
+  const allowedOrigins = ["http://localhost:3000","http://localhost:3001","http://localhost:3002",];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
@@ -70,7 +70,7 @@ app.use(function(req, res, next) {
 const httpServer = createServer();
 const io = new Server(httpServer, {
   cors: { 
-    origin: ["https://sociallobbystack.herokuapp.com"],
+    origin: ["http://localhost:3000","http://localhost:3001","http://localhost:3002"],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
   }
@@ -167,7 +167,7 @@ app.use("/settings",settingsRoutes);
 app.use("/notifications",notificationsRoutes);
 
 app.use(function(req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "https://sociallobbystack.herokuapp.com", );
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000","http://localhost:3001","http://localhost:3002" );
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE, PATCH');
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
